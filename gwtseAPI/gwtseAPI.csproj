@@ -13,7 +13,7 @@
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
+        <PlatformTarget>x86</PlatformTarget>
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
         <Optimize>false</Optimize>
@@ -34,11 +34,15 @@
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug x64|AnyCPU' ">
       <OutputPath>bin\Debug x64\</OutputPath>
       <PlatformTarget>x64</PlatformTarget>
+      <DefineConstants>DEBUG;TRACE</DefineConstants>
+      <DebugSymbols>true</DebugSymbols>
+      <DebugType>full</DebugType>
     </PropertyGroup>
     <ItemGroup>
       <Compile Include="TseAccess.cs" />
       <Compile Include="TseEntry.cs" />
       <Compile Include="TseInfo.cs" />
+      <Compile Include="TseTransactionResponse.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

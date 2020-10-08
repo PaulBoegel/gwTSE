@@ -11,6 +11,7 @@
         <e p="TseAccess.cs" t="Include" />
         <e p="TseEntry.cs" t="Include" />
         <e p="TSEInfo.cs" t="Include" />
+        <e p="TseTransactionResponse.cs" t="Include" />
       </e>
       <e p="gwtseAPI.sln" t="IncludeFlat" />
       <e p="gwtseTEST" t="IncludeRecursive">
@@ -19,8 +20,12 @@
         <e p="GwTseTest.cs" t="Include" />
         <e p="gwtseTEST.csproj" t="IncludeRecursive" />
         <e p="GwTseTest.Designer.cs" t="Include" />
+        <e p="GwTseTest.resx" t="Include" />
         <e p="LanInit.cs" t="Include" />
         <e p="LanInit.Designer.cs" t="Include" />
+        <e p="Navigate.cs" t="Include" />
+        <e p="Navigate.Designer.cs" t="Include" />
+        <e p="Navigate.resx" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
@@ -30,6 +35,9 @@
           <e p="Settings.Designer.cs" t="Include" />
           <e p="Settings.settings" t="Include" />
         </e>
+        <e p="Transaction.cs" t="Include" />
+        <e p="Transaction.Designer.cs" t="Include" />
+        <e p="Transaction.resx" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
     </e>

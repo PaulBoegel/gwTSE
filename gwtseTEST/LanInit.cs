@@ -14,7 +14,7 @@ namespace gwtseTEST
         
         private void button1_Click(object sender, EventArgs e)
         {
-            serverIp = tbServerPort.Text;
+            serverIp = tbServerIp.Text;
             serverPort = tbServerPort.Text;
             serverToken = tbServerToken.Text;
             this.Close();

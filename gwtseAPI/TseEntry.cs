@@ -51,7 +51,7 @@ namespace gwtseAPI
 
         #endregion
 
-        internal byte[] ProcessData
+        public byte[] ProcessData
         {
             get
             {
@@ -61,9 +61,10 @@ namespace gwtseAPI
                 }
                 return ProcessDataBuffer;
             }
+            private set { ProcessData = value; }
         }
 
-        internal byte[] LogMessage
+        public byte[] LogMessage
         {
             get
             {
@@ -75,10 +76,11 @@ namespace gwtseAPI
             }
         }
 
+        public bool IsSystemLog { get; }
+        
         private UInt32 id;
-        internal bool IsSystemLog;
-        internal UInt64 ProcessDataLength;
-        internal UInt64 SizeInBlocks
+        public  UInt64 ProcessDataLength { get; }
+        public UInt64 SizeInBlocks
         {
             get { return ProcessDataLength / 512 + 1; }
         }
@@ -120,7 +122,7 @@ namespace gwtseAPI
 
         static internal TseEntry first(TseAccess tseAccess)
         {
-            TseEntryContext context = new TseEntryContext(tseAccess.worm_context);
+            TseEntryContext context = new TseEntryContext(tseAccess.tse_context);
             int err = worm_entry_iterate_first(context.ptr);
             if (err != 0)
             {
@@ -142,7 +144,7 @@ namespace gwtseAPI
 
         private TseEntryContext createWormEntryContextForId(UInt32 id)
         {
-            TseEntryContext context = new TseEntryContext(tseAccess.worm_context);
+            TseEntryContext context = new TseEntryContext(tseAccess.tse_context);
             Console.WriteLine("creating context for " + id);
             int err = worm_entry_iterate_id(context.ptr, id);
             if (err != 0)
