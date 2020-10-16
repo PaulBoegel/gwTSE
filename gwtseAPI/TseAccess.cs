@@ -9,7 +9,10 @@ namespace gwtseAPI
     {
         [DllImport("WormAPI.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
         private static extern int worm_init_lan(out IntPtr tse_context, string url, string apiToken);
-        
+
+        [DllImport("WormAPI.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+        private static extern int worm_init(out IntPtr worm_context, string mountPoint);
+
         [DllImport("WormAPI.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern int worm_cleanup(IntPtr worm_context);
         
@@ -73,7 +76,18 @@ namespace gwtseAPI
         internal IntPtr tse_context;
         private TseInfo info;
         private bool alreadyDisposed = false;
-        
+
+        public TseAccess(char driveletter)
+        {
+            string mountPoint = driveletter + ":";
+            int err = worm_init(out tse_context, mountPoint);
+            if (err != 0)
+            {
+                throw new Exception("Failed to initialize: " + err);
+            }
+            info = new TseInfo(tse_context);
+        }
+
         public TseAccess(string ip, string port, string apiToken)
         {
             string url = ip + ":" + port;

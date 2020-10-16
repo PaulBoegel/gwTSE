@@ -58,6 +58,31 @@ namespace gwtseTEST
 
             btnSelectTse.Enabled = true;
         }
+        private void doInit()
+        {
+            //pnAfterInit.Enabled = false;
+            //pnManagement.Enabled = false;
+            //btnSelectTse.Enabled = false;
+            if (tseAccess != null)
+            {
+                tseAccess.Dispose();
+                tseAccess = null;
+            }
+
+            list = null;
+
+            try
+            {
+                tseAccess = new TseAccess(tb_driveletter.Text[0]);
+            }
+            catch (Exception ex)
+            {
+                tbResult.Text = ex.Message;
+                return;
+            }
+            updateState();
+        }
+
 
         private void btnSelectTSE_Click(object sender, EventArgs e)
         {
@@ -361,5 +386,17 @@ namespace gwtseTEST
                 exportProgress.Visible = false;
             }
         }
+
+        private void bt_localInit_Click(object sender, EventArgs e)
+        {
+            if (tb_driveletter.TextLength != 1)
+            {
+                tbResult.Text = "Init error: drive letter missing";
+                return;
+            }
+            doInit();
+        }
+
+
     }
 }
